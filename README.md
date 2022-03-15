@@ -6,6 +6,7 @@ Tanto EEGLab como Fieldtrip pueden leer archivos .bdf, pero, por razones descono
 como Experiment Builder o Stim_Only (JIE). 
 Esta incapacidad de leer todos los eventos puede llevar a un error en el análisis ya que, por ejemplo, no se detectan todos los estímulos.
 Para solucionar este problema se puede usar una la función sload que es parte del toolbox BioSig.
+Este script hace uso de esa función para leer "correctamente" eventos en .bdf
 
 Para más info sobre Biosig
 http://biosig.sourceforge.net/
