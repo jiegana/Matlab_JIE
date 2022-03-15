@@ -17,7 +17,7 @@
 clear all
 
 
-fileData = dir('*.bdf');            %Encuentra los archivos .asc dentro del
+fileData = dir('*.bdf');            %Encuentra los archivos .bdf dentro del
 fileNames = {fileData.name};        %directorio especificado y saca nombres
 narchi = length(fileNames);
 
