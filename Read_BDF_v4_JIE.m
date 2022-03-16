@@ -6,7 +6,7 @@
 % others, it correctly reads TTL identifiers and its time stamps
 %
 % Trig contains TTL information
-% sig contains sinal
+% sig contains signal
 % head contains file's header 
 %
 % Use at your own risk
