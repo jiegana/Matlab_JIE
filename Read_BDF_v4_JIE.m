@@ -21,7 +21,7 @@ close all                       %remove if necessary
 datapath = '/Users/jiegana/Google Drive/Lab_GooDrive/Proyecto_EEG_Anesthesia_Pain/Proyecto_BNI/Pain_for_Purdon_Lab/PainData_fPL';
 
 
-%% Find folders with EEG files inside
+%% Find files and folders with EEG(bdf) files inside datapath
 cd (datapath);
 filelist = dir(fullfile(datapath, '**/*.bdf'));
 for tempidx = 1:length(filelist)
