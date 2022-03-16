@@ -25,8 +25,8 @@ datapath = '/Users/jiegana/Google Drive/Lab_GooDrive/Proyecto_EEG_Anesthesia_Pai
 cd (datapath);
 filelist = dir(fullfile(datapath, '**/*.bdf'));
 for tempidx = 1:length(filelist)
-    numsiname = regexp(filelist(tempidx).folder,'\d+','Match');
-    filelist(tempidx).pacnum = str2double(numsiname{1});
+    numsiname = regexp(filelist(tempidx).folder,'\d+','Match'); %finds subject's ID number
+    filelist(tempidx).pacnum = str2double(numsiname{1});        %add field to structure subject's number
 end
 
 %%
@@ -35,6 +35,5 @@ for fileindex = 1%:tempidx
     [sig, head] = sload (archi,'BDF[4]');
     Trig(:,1) = head.BDF.Trigger.TYP;   % TTL identifier
     Trig(:,2) = head.BDF.Trigger.POS;   % Time position in sample number
-    Trig(:,3) = head.SampleRate;        % Sampling rate
-    
+    Trig(:,3) = head.SampleRate;        % Sampling rate    
 end
