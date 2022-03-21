@@ -19,6 +19,7 @@ close all                       %remove if necessary
 %% Check Biosig sload function is available
 A = exist('sload'); %#ok<EXIST>
 if A == 0
+    %replace with adequate folder
     cd ('/Users/jiegana/Documents/Scripts_MatLab/biosig4octmat-2.92')
     biosig_installer
 end
