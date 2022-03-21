@@ -33,7 +33,11 @@ end
 for fileindex = 1%:tempidx
     archi = [filelist(tempidx).folder '/' filelist(tempidx).name];
     [sig, head] = sload (archi,'BDF[4]');
-    Trig(:,1) = head.BDF.Trigger.TYP;   % TTL identifier
-    Trig(:,2) = head.BDF.Trigger.POS;   % Time position in sample number
-    Trig(:,3) = head.SampleRate;        % Sampling rate    
+
+    BDFJIE.event(:,1) = head.BDF.Trigger.TYP;   % TTL identifier
+    BDFJIE.event(:,2) = head.BDF.Trigger.POS;   % Time position in sample number
+    BDFJIE.event(:,3) = head.SampleRate;        % Sampling rate   
+    BDFJIE.signal = sig;
+    BDFJIE.header = head;
+    
 end
