@@ -9,6 +9,6 @@ Para solucionar este problema se puede usar una la función sload que es parte d
 Este script hace uso de esa función para leer "correctamente" eventos en .bdf
 
 Para más info sobre Biosig
-http://biosig.sourceforge.net/
+*http://biosig.sourceforge.net/*
 
 JIE 15/03/2021
