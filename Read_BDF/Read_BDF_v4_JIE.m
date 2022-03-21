@@ -38,6 +38,7 @@ end
 for fileindex = 1%:tempidx
     archi = [filelist(tempidx).folder '/' filelist(tempidx).name];
     [sig, head] = sload (archi,'BDF[4]');
+%   for [4] specification see 'help bdf2biosig_events'
     
     BDFJIE.event(:,1) = head.BDF.Trigger.TYP;   % TTL identifier
     BDFJIE.event(:,2) = head.BDF.Trigger.POS;   % Time position in sample number
