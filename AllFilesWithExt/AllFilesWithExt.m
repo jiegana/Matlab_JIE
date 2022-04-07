@@ -2,7 +2,7 @@ function [filelist] = AllFilesWithExt(varargin)
 % AllFilesWithExt find all files with certain extension nested in a given directory
 % 
 % usage [outstruct] = AllFilesWithExt (extension{mandatory input},
-% indir{optional}, outdir{optinal})
+% indir{optional}, outdir{optional})
 % 
 % Allfilesext finds all files with a given extension located in a given directory 
 % and in all directories nested within it. It uses varaible number of
