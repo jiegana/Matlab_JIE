@@ -3,3 +3,5 @@ Contiene diversos scripts para tareas comunes en el procesamiento y análisis de
 
 Son completamente abiertos, usables y modificables.
 Cualquier comentario es bienvenido
+
+Guti: Probando git con PEPE
