@@ -8,7 +8,6 @@ close all
 clc
 
 datapath = '/Users/jiegana/Dropbox/Respaldo_FONDEF_ID19I10345/Scripts_Prep_PEUMA2/Data_PEUMA2';
-
 cd (datapath)
 %% Find folders with EDFs inside
 cd (datapath);
