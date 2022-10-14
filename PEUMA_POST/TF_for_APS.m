@@ -1,6 +1,8 @@
-% This script is intended to read EDFs files from Pablo Speulveda's Sedline
-% files. It is the first part of the analysis.
-% It uses fieldtrip (http://www.fieldtriptoolbox.org/start) functions
+% Process PEUMA EDF in order to plot 1 Time/frequency chart (spectrogram)
+% for all files for each patient.
+% Reads data
+% Appends data
+% Generates plot (figure)
 
 
 clear all
@@ -14,11 +16,11 @@ cd (EDFpath);
 filelist = dir(fullfile(EDFpath, '**/*.edf'));
 
 %% Read Time data from CSV
-cd (CSVpath);
-TM = readtable('Tiempos.csv');
+% cd (CSVpath);
+% TM = readtable('Tiempos.csv');
 %% Read Expert Windows selection from CSV
-cd (CSVpath);
-EW = readtable('Ventanas_Experto.csv');
+% cd (CSVpath);
+% EW = readtable('Ventanas_Experto.csv');
 %%  
 subjs = {'SFXXX'};
 subfilecount = 0;
@@ -27,14 +29,15 @@ for findex =1:length(filelist)
 %     Reading ID from folder name
     ks = strfind(filelist(findex).folder,'/SF');
     subj = filelist(findex).folder((ks+1):ks+5);
-%     Reading file initiation timme from file name
-    kt = strfind(filelist(findex).name,'.edf');
-    finiSEC = filelist(findex).name (kt-2:kt-1);
-    finiMIN = filelist(findex).name (kt-4:kt-3);
-    finiHOUR = filelist(findex).name (kt-6:kt-5);
-    temp1 = [finiHOUR ':' finiMIN ':' finiSEC];
-    temp1 = datetime(temp1, 'Format', 'HH:mm:ss');
-    filelist(findex).initime = temp1;
+    
+% %     Reading file initiation timme from file name
+%     kt = strfind(filelist(findex).name,'.edf');
+%     finiSEC = filelist(findex).name (kt-2:kt-1);
+%     finiMIN = filelist(findex).name (kt-4:kt-3);
+%     finiHOUR = filelist(findex).name (kt-6:kt-5);
+%     temp1 = [finiHOUR ':' finiMIN ':' finiSEC];
+%     temp1 = datetime(temp1, 'Format', 'HH:mm:ss');
+%     filelist(findex).initime = temp1;
     
     tf = strcmp(subjs,subj);        %check change of subject
 
@@ -42,9 +45,7 @@ for findex =1:length(filelist)
         filelist(findex).ID = {subj};
         subjs = subj;
         filelist(findex).subjfilenum = 1;
-%         sc = sc + 1;
-        demo(subcount) = findex;
-        subcount = subcount + 1;
+%         subcount = subcount + 1;
         
   %for 2nd data point onwards (avoids reading non-existing data)
         if findex > 1
@@ -55,12 +56,13 @@ for findex =1:length(filelist)
         filelist(findex).subjfilenum = filelist(findex-1).subjfilenum + 1;
     end
 
-    temp{findex} = subj;
+%     temp{findex} = subj;
     if findex == length(filelist)       %end of data (last file)
         filelist(findex).totfile = filelist(findex).subjfilenum;
     end
 end
-totsubjects = unique(temp);
+totsubjects = length(unique([filelist.ID]));
+filespersub = [filelist.totfile];
 
     
 
