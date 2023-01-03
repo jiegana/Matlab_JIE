@@ -39,7 +39,7 @@ DelTrue = cell2mat(table2cell(TAPS(:,4)));
 NonDel = 0;
 YesDel = 0;
 % Main Loop
-for NumSubj = 1%:length(APSval)
+for NumSubj = 22%:length(APSval)
     catEEG = [];
     
     APSSubj = APSpos(NumSubj); %replacing by subjects in APS's list
@@ -149,7 +149,7 @@ for NumSubj = 1%:length(APSval)
     %%%%%%%%%%%%%%%%%%
     %%%%  FIGURE  %%%%
     %%%%%%%%%%%%%%%%%%
-    figure('Position',[80 85 1280 720]);
+    figure
     
     subplot(2,2,1)
     sf = surf(WT3/60,WF3,10*log10(WP3));   % time in minutes and power in dB
@@ -162,7 +162,7 @@ for NumSubj = 1%:length(APSval)
     ylabel ('Frequency','Fontsize',14)
     caxis([0 15])
     colorbar
-    title('Whole session', 'Fontsize',20)
+    title('Whole session')
     hold on
     
     subplot(2,2,3)
@@ -183,7 +183,7 @@ for NumSubj = 1%:length(APSval)
     colorbar
     xx = 1:length(RGEEG(1,:));
     xsp1 = xx/Fs;
-    title('APS selected window','Fontsize',20)
+    title('APS selected window')
     hold on
     
     subplot(2,2,2)
@@ -192,22 +192,20 @@ for NumSubj = 1%:length(APSval)
     xlabel ('time (s)')
     ylabel ('\mu V')
     ylim ([-50 50])
-    legend ('Raw EEG','Fontsize',12)
+    legend ('Raw EEG')
     tempti = ['Window ' num2str(RGwinindex) '/5'];
-    title (tempti,'Fontsize',20);
+    title (tempti);
     
     subplot(2,2,4)
     plot(f,MTS1,'LineWidth',2)
     xlabel ('Frequency (Hz)')
     ylabel ('\mu V^2/Hz')
-    tempti = ['Alpha Peak = ' sprintf('%.2f',alfapeakf) ' Hz'];
-    legend (tempti,'Fontsize',12)
-    tempti = ['Alpha rPower = ' sprintf('%.2f',relatalfa)];
-    title(tempti,'Fontsize',20)
+%     change in precision to add in legend
     
-    
+    tempti = ['Alpha Peak = ' num2str(ap2d) ' Hz'];
+    legend (tempti)
     %  Title for figure
-    sgtitle(currSubj,'Fontsize',24,'Fontweight','bold')
+    sgtitle(currSubj,'Fontsize',14,'Fontweight','bold')
     hold off
     % Saving figure
     ttjpg = ['Sig_and_Spect_' tt '.jpg'];
