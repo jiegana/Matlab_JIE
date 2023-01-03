@@ -26,8 +26,8 @@ end
 cd (CSVpath);
 TAPS = readtable('times_APS.csv');
 APSSubj = table2cell(TAPS(:,1));                    %Subjects by APS
-TAPS.MeanRelatAlfa = zeros(size(TAPS,1),1);
-TAPS.STDRelatAlfa = zeros(size(TAPS,1),1);
+TAPS.AlphaRelativePow = zeros(size(TAPS,1),1);
+TAPS.AlphaPeakFreq = zeros(size(TAPS,1),1);
 %% Finding APS subjects
 [APSval,APSpos]=intersect(SDataF,APSSubj);          % coincidences
 [APSdifval,APSdifpos] = setdiff(SDataF,APSSubj);    % differences
@@ -39,7 +39,7 @@ DelTrue = cell2mat(table2cell(TAPS(:,4)));
 NonDel = 0;
 YesDel = 0;
 % Main Loop
-for NumSubj = 1%:length(APSval)
+for NumSubj = 1:length(APSval)
     catEEG = [];
     
     APSSubj = APSpos(NumSubj); %replacing by subjects in APS's list
@@ -87,7 +87,7 @@ for NumSubj = 1%:length(APSval)
             break
         end
     end
-%     RGwinindex
+    %     RGwinindex
     %     SPECTROGRAMS
     wintime = 15; %in seconds
     winlen = floor(wintime*Fs);
@@ -135,7 +135,7 @@ for NumSubj = 1%:length(APSval)
     %     MTS2 = pow2db(MTS2);
     %     MTS3 = pow2db(MTS3);
     %     MTS4 = pow2db(MTS4);
-        
+    
     % Alpha characteristics
     totP = sum(MTS1);                       % total power
     alfaF = find(f > 8 & f < 12);           % index of alpha
@@ -145,6 +145,10 @@ for NumSubj = 1%:length(APSval)
     alfapeakf = f(alfapeaki);
     totalfa = sum(alfaP);
     relatalfa = totalfa/totP;
+    
+    %     Adding to table
+    TAPS.AlphaRelativePow(NumSubj) = relatalfa;
+    TAPS.AlphaPeakFreq(NumSubj) = alfapeakf;
     
     %%%%%%%%%%%%%%%%%%
     %%%%  FIGURE  %%%%
@@ -213,7 +217,7 @@ for NumSubj = 1%:length(APSval)
     ttjpg = ['Sig_and_Spect_' tt '.jpg'];
     cd (SCTGpath)
     saveas(gcf,ttjpg, 'jpg');
-%     close
+    close
     %%
     %     %     Spectrograms plots
     %     fig(NumSubj) = figure;
@@ -235,7 +239,7 @@ for NumSubj = 1%:length(APSval)
     %     tt = char(currSubj);
     %     title(tt,'Fontsize',14);
     
-
+    
     %     meanrelatalfa = mean(relatalfa);
     %     stdrelatalfa = std(relatalfa);
     %     TAPS.MeanRelatAlfa(NumSubj) = mean(relatalfa);
