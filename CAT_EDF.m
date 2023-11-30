@@ -58,6 +58,9 @@ for NumSubj = 1%:length(APSval)
         %         File exchange function edfreadUntilDone
         %         https://www.mathworks.com/matlabcentral/fileexchange/66088-edfreaduntildone-fname-varargin
         catEEG = cat(2,catEEG,record);
+        if NumSFile == 1
+            Firsthdr = hdr;
+        end
     end
     datafilename = [currSubj '_all_EGG.mat'];
     cd '/Users/jiegana/Desktop'
