@@ -13,7 +13,7 @@ Finfo = dir;                            %Directory information
 SubF = find ([Finfo.isdir] == 1);       %Find SubFolders
 RealF = {Finfo(SubF).name};             %Folders Names
 IndexSA = strmatch('SF',RealF)';        %Indices of Folders named 'SF'
-SDataF = RealF(IndexSA)';               %Names of all Folders name containing 'caso_'
+SDataF = RealF(IndexSA)';               %Names of all Folders name containing 'SF'
 
 %% Find EDF files for each subject folder
 
