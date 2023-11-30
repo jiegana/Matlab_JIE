@@ -2,7 +2,8 @@
 clear all
 close all
 clc
-compuCheck_PA
+datapath = '/Volumes/GoogleDrive/.shortcut-targets-by-id/0B1pc2fddf2Q1MGNrYThJMHZlM2c/Proyecto_EEG_Anesthesia_Pain/Proyecto_BNI/Analisis/Proyecto_Dolor/Data_Pain';
+
 %% Find folders with Report File inside
 cd (datapath);
 Finfo = dir;                          %Directory information

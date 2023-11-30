@@ -4,9 +4,11 @@ clear all
 close all
 clc
 
+% Paths (change accordingly)
 EDFpath = '/Users/jiegana/Dropbox/Respaldo_FONDEF_ID19I10345/Scripts_Prep_PEUMA2/Data_PEUMA2';
 CSVpath = '/Users/jiegana/Dropbox/Respaldo_FONDEF_ID19I10345/Scripts_Prep_PEUMA2';
 SCTGpath = '/Users/jiegana/Dropbox/Respaldo_FONDEF_ID19I10345/Scripts_Prep_PEUMA2/SPECTG';
+
 cd (EDFpath);
 %% Find folders with EDFs inside
 Finfo = dir;                            %Directory information
@@ -58,11 +60,13 @@ for NumSubj = 1%:length(APSval)
         %         File exchange function edfreadUntilDone
         %         https://www.mathworks.com/matlabcentral/fileexchange/66088-edfreaduntildone-fname-varargin
         catEEG = cat(2,catEEG,record);
+        
+        % Rescuing first header
         if NumSFile == 1
             Firsthdr = hdr;
         end
     end
     datafilename = [currSubj '_all_EGG.mat'];
-    cd '/Users/jiegana/Desktop'
-    save (datafilename, 'catEEG');
+    cd '/Users/jiegana/Desktop' % Destination folder
+    save (datafilename, 'catEEG', 'Firsthdr');
 end

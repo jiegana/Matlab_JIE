@@ -69,7 +69,7 @@ for NumSubj = 1:length(APSval)
     
     %     Cutting Points (APSEEGcp)    %
     %     Divide EEG length in 7. Middle five will be used for obtaining 5
-    %     of 15 seconds lenght
+    %     windows of 15 seconds lenght
     APSEEGcp = floor(linspace(1,length(APSEEG),7)); %APSEEG cutting points
     APSEEGcp = APSEEGcp(2:6);
     APSEEGcpt = floor(APSEEGcp/Fs);
